@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
 {
-    'name': 'Sale Mining',
+    'name': 'Barge',
     'version': '1.0',
     'author': 'Technoindo.com',
-    'category': 'Sales Management',
+    'category': 'Shipping Barge Management',
     'depends': [
-        'sale_contract',
-        'shipping',
-        'sale_qaqc',
+        "stock",
+        "procurement"
     ],
     'data': [
-        'views/menu.xml',
-        'views/qaqc_coa.xml',
+        'views/barge.xml',
+
+        "data/barge_data.xml",
     ],
     'qweb': [
         # 'static/src/xml/cashback_templates.xml',
