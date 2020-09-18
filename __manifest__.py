@@ -13,6 +13,8 @@
         'views/barge.xml',
 
         "data/barge_data.xml",
+
+        "security/ir.model.access.csv",
     ],
     'qweb': [
         # 'static/src/xml/cashback_templates.xml',
