@@ -60,12 +60,13 @@ class Barge(models.Model):
 	
 	@api.multi
 	def unlink(self):
-		for rec in self:
-			if rec.location_id:
-				rec.location_id.toggle_active()
-			if rec.procurement_rule_id:
-				rec.procurement_rule_id.toggle_active()
+		raise UserError(_("Cannot Delete Data, Please Archive It ") )
+		# for rec in self:
+		# 	if rec.location_id:
+		# 		rec.location_id.toggle_active()
+		# 	if rec.procurement_rule_id:
+		# 		rec.procurement_rule_id.toggle_active()
 		
-		return super(Barge, self ).unlink()
+		# return super(Barge, self ).unlink()
 		
 
