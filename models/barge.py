@@ -18,7 +18,6 @@ class Barge(models.Model):
             ondelete="restrict")
 	location_id = fields.Many2one(
             'stock.location', 'Location',
-			readonly=True,
 			domain=[ ('usage','=',"internal")  ],
             ondelete="restrict")
 	procurement_rule_id = fields.Many2one(
@@ -40,12 +39,13 @@ class Barge(models.Model):
 		picking_type = StockPickingType.search([ ("code", '=', "outgoing" ), ("warehouse_id", '=', values["warehouse_id"] ) ])
 		if not picking_type:
 			raise UserError(_("Cannot Find Picking Type For Procurement Rule ") )
-
-		values["location_id"] = StockLocation.create({
-							"name" : values["name"],
-							"usage" : "internal",
-							"location_id" : warehouse.view_location_id.id ,
-						}).id
+		
+		if not values["location_id"] : 
+			values["location_id"] = StockLocation.create({
+								"name" : values["name"],
+								"usage" : "internal",
+								"location_id" : warehouse.view_location_id.id ,
+							}).id
 
 		values["procurement_rule_id"] = ProcurementRule.create({
 							"name" : values["name"] + "-> Customer",
